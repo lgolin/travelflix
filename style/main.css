@@ -1,49 +1,127 @@
-:root {
-  --vermelho: #E50914;
-  --preto: #141414;
-}
-
+/*====  RESET ============================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  background: var(--preto);
-  font-family: Ubuntu, serif;
-  color: #fff;
+a {
+  text-decoration: none;
 }
-/*Nav Bar*/
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/*====  VARIABLES ============================ */
+:root {
+  --header-height: 4.5rem;
+  /* colors */
+  --hue: 250;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --banner-text-color: hsl(0, 0%, 100%); /* white */
+  --text-color: hsl(20, 20%, 20%);
+  --text-color-light: hsl(0, 0%, 98%);
+  --body-color: hsl(0, 0%, 98%);
+
+
+  /* fonts */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
+}
+
+/*===  BASE ============================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 1rem var(--body-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*====  LAYOUT ============================ */
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section {
+  padding: calc(5rem + var(--header-height)) 0;
+}
+
+.section .title {
+  margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
+}
+
+.section header {
+  margin-bottom: 4rem;
+}
+
+.section header strong {
+  color: var(--base-color);
+}
+
+/*===  NAV BAR ========================== */
 
 header .container{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-}
-
-header .logo {
-  margin-left: 0.625rem;
-  color: var(--vermelho);
-  font-family: Ubuntu, serif;
-  font-size: 2.5rem;
+  height: var(--header-height);
 }
 
 header nav a{
   text-decoration: none;
-  color: #AAA;
+  color: var(--title-color);
   margin-right: 0.621rem;
 }
 
 header nav a:hover {
-  color: #fff;
+  color: var(--base-color);
 }
 
-/* banner principal */
+/*====  LOGO ============================ */
+
+header .logo {
+  font: 700 1.5rem var(--title-font);
+  color: var(--title-color);
+}
+
+header .logo span {
+  color: var(--base-color);
+}
+
+.logo-alt span {
+  color: var(--body-color);
+}
+
+/*===  BANNER PRINCIPAL ============================ */
+
 .filme-principal {
   font-size: 1rem;
-  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)100%), url("/img/capa-house.jpg");
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)100%), url("https://source.unsplash.com/1600x900/?nature,water");
 
   height: 25rem;
   background-size: cover;
@@ -55,29 +133,30 @@ header nav a:hover {
 }
 
 .filme-principal .descricao {
+  color: var(--banner-text-color);
   margin-top: 10px;
   margin-bottom: 2.5rem;
 }
 
 .filme-principal .titulo {
+  color: var(--banner-text-color);
   margin-top: 15%;
   font-size: 2.5rem;
 }
 
 .botao {
-  background-color: rgba(0,0,0,0.7);
+  background-color:var(--base-color);
   border: none;
-  color: #fff;
+  color: var(--text-color-light);
 
   padding: 0.937rem 1.875rem;
   margin-right: 0.937rem;
   font-size: 0.75rem;
   
-  font-family: "Fira Code Retina", serif;
   transition: 0.3s ease all;
   
   /* implementei border-radius */
-  border-radius: 10px;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
@@ -86,15 +165,10 @@ header nav a:hover {
 }
 
 .botao:hover {
-  background-color: white;
-  color: black;
+  background: var(--base-color-alt);
 }
 
-.container {
-  margin-left: 1.25rem;
-}
-
-.filme-principal .container  {
+.filme-principal .banner-container  {
   width: 70%;
 }
 
@@ -108,4 +182,42 @@ header nav a:hover {
 
 .carousel-filmes {
   margin-top: 0.321rem;
+}
+
+/*====  FOOTER ============================ */
+footer {
+  background: var(--base-color);
+}
+
+footer.section {
+  padding: 4rem 0;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: var(--text-color-light);
+  margin-bottom: 0.75rem;
+}
+
+footer i {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+}
+
+footer .social {
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
+footer .social a {
+  transition: 0.3s;
+  display: inline-block;
+}
+
+footer .social a:hover {
+  transform: translateY(-8px);
 }
